@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+### The Frontend and The Backend Architecture
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Frontend Responsibilities:
 
-## Available Scripts
+Form UI to add/edit contact
+Lists to view all contacts
+Search bar to filter contacts by either name or email
+New page for editing and updating
+Deletion button with confirmation
+State management for contacts
+API requests to backend (CRUD + Search)
 
-In the project directory, you can run:
+### Backend Responsibilities:
 
-### `npm start`
+RESTful API endpoints:
+POST /contacts – Creates new contact
+GET /contacts – Fetch all contacts
+GET /contacts/:id – Get a single contact
+PUT /contacts/:id – Update contact
+DELETE /contacts/:id – Delete contact
+GET /contacts/search?name=...&email=... – Search
+### Input validation (e.g., with Joi or express-validator)
+MongoDB schema definition
+Error handling and status codes
+Cross-Origin setup for frontend connection
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### How the frontend and the backend work together
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### For(Add Contact):
+### Frontend:
+User fills contact form
+On clicking submit, React sends data via the Axios.post("/api/contacts", contactData)
 
-### `npm test`
+### Backend:
+Express receives POST request at /contacts
+Validates and saves the data to MongoDB
+Responds with success or error message
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend:
+Displays confirmation and updates UI without reload
 
-### `npm run build`
+### For(Search Contact):
+### Frontend:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User types either name or email in search field
+React debounces input and sends request like:
+Axios.get("/api/contacts/search?name=Jane")
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Parses query and runs MongoDB filter
+Returns filtered list
 
-### `npm run eject`
+### Frontend:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Displays search results instantly
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### The Frontend allow users to: 
+ 
+View all contacts
+Create a new contact
+Edit an existing contact
+Delete a contact
+Search for contacts (by name or email)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Viewing Contacts (ContactList.jsx)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### The ContactList.jsx file:
 
-## Learn More
+Fetches all contacts with useEffect
+Display them in a list on the web page
+Includes edit and delete buttons
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Creating a Contact (ContactForm.jsx)
 
-### Code Splitting
+### The ContactForm.jsx file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+A Controlled form with inputs for name, email, phone.
+On clicking the submit, calls createContact(data)
+Shows either success or error message
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Editing a Contact (EditContact.jsx)
 
-### Making a Progressive Web App
+### The ContactEdit.jsx file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Uses React Router to get the id param
+Fetch the contact via getContactById(id)
+Prefills the form and allow updates
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Deleting a Contact
 
-### Deployment
+On delete button click, show confirmation
+Call deleteContact(id) then update the UI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Searching Contacts (Search.jsx)
 
-### `npm run build` fails to minify
+A Controlled input
+Debounce search
+Call searchContacts e.g ("name=Benson")
+Updates the contact list state with the response
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+built with cra, local state management, (datas and functions are passed with props)
+whole guideline on how the project works
