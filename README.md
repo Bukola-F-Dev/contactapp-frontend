@@ -1,4 +1,4 @@
-### The Frontend and The Backend Architecture
+### The Frontend and The Backend Structure.
 
 ### Frontend Responsibilities:
 
@@ -8,7 +8,7 @@ Search bar to filter contacts by either name or email
 New page for editing and updating
 Deletion button with confirmation
 State management for contacts
-API requests to backend (CRUD + Search)
+Frontend API requests to backend (CRUD + Search)
 
 ### Backend Responsibilities:
 
@@ -18,8 +18,8 @@ GET /contacts – Fetch all contacts
 GET /contacts/:id – Get a single contact
 PUT /contacts/:id – Update contact
 DELETE /contacts/:id – Delete contact
-GET /contacts/search?name=...&email=... – Search
-### Input validation (e.g., with Joi or express-validator)
+GET /contacts/search?name&email – Search
+### Input validation (express-validator)
 MongoDB schema definition
 Error handling and status codes
 Cross-Origin setup for frontend connection
@@ -29,7 +29,7 @@ Cross-Origin setup for frontend connection
 ### For(Add Contact):
 ### Frontend:
 User fills contact form
-On clicking submit, React sends data via the Axios.post("/api/contacts", contactData)
+On clicking submit, React Frontend sends data via the Axios.post("/api/contacts", contactData)
 
 ### Backend:
 Express receives POST request at /contacts
@@ -47,9 +47,7 @@ React debounces input and sends request like:
 Axios.get("/api/contacts/search?name=Jane")
 
 ### Backend:
-
-Parses query and runs MongoDB filter
-Returns filtered list
+Parses query and runs MongoDB filter and Returns filtered list
 
 ### Frontend:
 
@@ -67,7 +65,7 @@ Search for contacts (by name or email)
 
 ### The ContactList.jsx file:
 
-Fetches all contacts with useEffect
+Fetches all contacts with useEffect**************************************
 Display them in a list on the web page
 Includes edit and delete buttons
 
@@ -76,7 +74,7 @@ Includes edit and delete buttons
 
 ### The ContactForm.jsx file:
 
-A Controlled form with inputs for name, email, phone.
+A Controlled form with inputs for name, email, phone and note.
 On clicking the submit, calls createContact(data)
 Shows either success or error message
 
@@ -86,8 +84,8 @@ Shows either success or error message
 ### The ContactEdit.jsx file:
 
 Uses React Router to get the id param
-Fetch the contact via getContactById(id)
-Prefills the form and allow updates
+Fetch the contact info via the getContactById(id)
+Allows Users to Prefill the form and allow updates
 
 
 ### Deleting a Contact
@@ -102,8 +100,8 @@ Debounce search
 Call searchContacts e.g ("name=Benson")
 Updates the contact list state with the response
 
+### Summary. 
+It's a two page CRA website that does the functionality of Creating, Viewing, Updating, Deleting and Searching of contacts (Composed of Name, Email Address, Phone Number and note).
+It works in a way that rejects duplicate email or phone number by displaying error messages.  
 
-
-
-built with cra, local state management, (datas and functions are passed with props)
-whole guideline on how the project works
+### A local state management is used and datas and functions are passed through props. 
