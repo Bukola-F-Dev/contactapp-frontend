@@ -46,14 +46,19 @@ const ContactForm = ({ onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage({ type: "", text: "" });
-
+  
     if (!validate()) return;
-
+  
     try {
       await axios.post(BASE_URL, formData);
-      setFormData({ name: "", email: "", phone: "" , note: "" }); // Clear form
+      setFormData({ name: "", email: "", phone: "", note: "" });
       onSuccess();
       setMessage({ type: "success", text: "Contact added successfully!" });
+  
+      // Clear message after 4 seconds
+      setTimeout(() => {
+        setMessage({ type: "", text: "" });
+      }, 4000);
     } catch (error) {
       setMessage({
         type: "error",
@@ -61,6 +66,11 @@ const ContactForm = ({ onSuccess }) => {
           error.response?.data?.message ||
           "Something went wrong. Please try again.",
       });
+  
+      // Clear error message after 5 seconds
+      setTimeout(() => {
+        setMessage({ type: "", text: "" });
+      }, 5000);
     }
   };
 
@@ -69,15 +79,15 @@ const ContactForm = ({ onSuccess }) => {
       <h2 className="text-2xl font-bold mb-4">Add New Contact</h2>
 
       {message.text && (
-        <div
-          className={`mb-4 p-2 rounded ${
-            message.type === "success"
-              ? "bg-green-100 text-green-700"
-              : "bg-red-100 text-red-700"
-          }`}
-        >
-          {message.text}
-        </div>
+  <div
+    className={`mb-4 p-2 rounded ${
+      message.type === "success"
+        ? "bg-green-100 text-green-700"
+        : "bg-red-100 text-red-700"
+    }`}
+  >
+    {message.text}
+  </div>
       )}
 
 <form onSubmit={handleSubmit} className="space-y-4 max-w-md">

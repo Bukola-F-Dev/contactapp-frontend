@@ -13,10 +13,9 @@ const Search = ({ onSearch }) => {
   };
 
   return (
-    <div className="flex justify-center mt-6">
   <form
     onSubmit={handleSubmit}
-    className="flex items-center gap-2 mb-4 w-full max-w-xl"
+    className="flex items-center gap-2 mb-4 w-full"
   >
     <input
       type="text"
@@ -43,7 +42,6 @@ const Search = ({ onSearch }) => {
       Clear
     </button>
   </form>
-</div>
   );
 };
 
