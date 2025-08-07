@@ -15,14 +15,14 @@ const Search = ({ onSearch }) => {
   return (
   <form
     onSubmit={handleSubmit}
-    className="flex items-center gap-2 mb-4 w-full"
+    className="flex items-center gap-2 mb-4 w-full mt-8"
   >
     <input
       type="text"
       placeholder="Search by name or email"
       value={query}
       onChange={(e) => setQuery(e.target.value)}
-      className="p-2 border rounded flex-1"
+      className="p-2 border rounded flex-1 w-full"
       required
     />
     <button
