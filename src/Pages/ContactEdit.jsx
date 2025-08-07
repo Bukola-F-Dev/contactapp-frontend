@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/contacts";
+const BASE_URL = "https://contactapp-backend-mnj6.onrender.com/api/contacts";
 
 const ContactEdit = () => {
   const { id } = useParams(); // get contact ID from URL

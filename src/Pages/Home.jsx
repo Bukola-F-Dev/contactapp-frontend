@@ -4,7 +4,7 @@ import ContactList from '../Components/ContactList'
 import Search from '../Components/Search'
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/contacts";
+const BASE_URL = "https://contactapp-backend-mnj6.onrender.com/api/contacts";
 
 const Home = () => {
   const [contacts, setContacts] = useState([]);
@@ -27,7 +27,7 @@ const Home = () => {
     try {
       if (!query) return fetchContacts();
 
-      const res = await axios.get(`http://localhost:5000/api/contacts/search`, {
+      const res = await axios.get(`https://contactapp-backend-mnj6.onrender.com/api/contacts/search`, {
         params: {
           name: query,
           email: query,

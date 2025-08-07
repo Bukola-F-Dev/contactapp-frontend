@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 // You can extract this to a separate api.js file if not already
-const BASE_URL = "http://localhost:5000/api/contacts";
+const BASE_URL = "https://contactapp-backend-mnj6.onrender.com/api/contacts";
 
 const ContactForm = ({ onSuccess }) => {
    

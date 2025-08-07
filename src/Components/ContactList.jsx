@@ -2,7 +2,7 @@
   import { Link } from "react-router-dom";
   import axios from "axios";
   
-  const BASE_URL = "http://localhost:5000/api/contacts";
+  const BASE_URL = "https://contactapp-backend-mnj6.onrender.com/api/contacts";
   
   const ContactList = ({ contacts, onDelete }) => {
    
