@@ -65,7 +65,7 @@ Search for contacts (by name or email)
 
 ### The ContactList.jsx file:
 
-Fetches all contacts with useEffect**************************************
+Fetches all contacts with useEffect
 Display them in a list on the web page
 Includes edit and delete buttons
 
@@ -104,4 +104,4 @@ Updates the contact list state with the response
 It's a two page CRA website that does the functionality of Creating, Viewing, Updating, Deleting and Searching of contacts (Composed of Name, Email Address, Phone Number and note).
 It works in a way that rejects duplicate email or phone number by displaying error messages.  
 
-### A local state management is used and datas and functions are passed through props. 
+### A local state management is used and datas and functions are passed through props within each component. 

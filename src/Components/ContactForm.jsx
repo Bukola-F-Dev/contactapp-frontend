@@ -75,37 +75,39 @@ const ContactForm = ({ onSuccess }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 bg-white p-6 shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Add New Contact</h2>
+    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg">
+  <h3 className="text-2xl font-bold mb-4">Add New Contact</h3>
 
-      {message.text && (
-  <div
-    className={`mb-4 p-2 rounded ${
-      message.type === "success"
-        ? "bg-green-100 text-green-700"
-        : "bg-red-100 text-red-700"
-    }`}
-  >
-    {message.text}
-  </div>
-      )}
+  {message.text && (
+    <div
+      className={`mb-4 p-2 rounded ${
+        message.type === "success"
+          ? "bg-green-100 text-green-700"
+          : "bg-red-100 text-red-700"
+      }`}
+    >
+      {message.text}
+    </div>
+  )}
 
-<form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-      <div>
-        <label>Name</label>
+  <form onSubmit={handleSubmit} className="space-y-4">
+    {/* Name & Email side-by-side */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="flex-1">
+        <label className="block text-sm font-semibold mb-1">Name</label>
         <input
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className={`w-full p-2 border rounded ${
+          className={`w-full border p-2 rounded ${
             errors.name ? "border-red-500" : "border-gray-300"
           }`}
         />
         {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
       </div>
 
-      <div>
-        <label>Email</label>
+      <div className="flex-1">
+        <label className="block text-sm font-semibold mb-1">Email</label>
         <input
           name="email"
           value={formData.email}
@@ -116,52 +118,55 @@ const ContactForm = ({ onSuccess }) => {
         />
         {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
       </div>
-
-      <div>
-        <label>Phone</label>
-        <input
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className={`w-full p-2 border rounded ${
-            errors.phone ? "border-red-500" : "border-gray-300"
-          }`}
-        />
-        {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
-      </div>
-
-
-      <div>
-        <label>Note</label>
-        <input
-          name="note"
-          value={formData.note}
-          onChange={handleChange}
-          className={`w-full p-6 border rounded ${
-            errors.note ? "border-red-500" : "border-gray-300"
-          }`}
-        />
-        {errors.note && <p className="text-red-500 text-sm">{errors.note}</p>}
-      </div>
-
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        Add Contact
-      </button>
-
-      {message.text && (
-        <p
-          className={`mt-2 text-sm ${
-            message.type === "error" ? "text-red-600" : "text-green-600"
-          }`}
-        >
-          {message.text}
-        </p>
-      )}
-    </form>
     </div>
+
+    {/* Phone (full width) */}
+    <div>
+      <label className="block text-sm font-semibold mb-1">Phone</label>
+      <input
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        className={`w-full p-2 border rounded ${
+          errors.phone ? "border-red-500" : "border-gray-300"
+        }`}
+      />
+      {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+    </div>
+
+    {/* Note (full width, bigger height) */}
+    <div>
+      <label className="block text-sm font-semibold mb-1">Note</label>
+      <textarea
+        name="note"
+        value={formData.note}
+        onChange={handleChange}
+        rows="5"
+        className={`w-full p-3 border rounded resize-none ${
+          errors.note ? "border-red-500" : "border-gray-300"
+        }`}
+      />
+      {errors.note && <p className="text-red-500 text-sm">{errors.note}</p>}
+    </div>
+
+    <button
+      type="submit"
+      className="bg-blue-600 text-white font-bold px-4 py-2 rounded hover:bg-blue-700"
+    >
+      Add Contact
+    </button>
+
+    {message.text && (
+      <p
+        className={`mt-2 text-sm ${
+          message.type === "error" ? "text-red-600" : "text-green-600"
+        }`}
+      >
+        {message.text}
+      </p>
+    )}
+  </form>
+</div>
   );
 };
 

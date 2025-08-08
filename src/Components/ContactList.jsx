@@ -1,6 +1,5 @@
  import React, { useEffect, useState } from "react";
   import { Link } from "react-router-dom";
-  import axios from "axios";
   
   const BASE_URL = "https://contactapp-backend-mnj6.onrender.com/api/contacts";
   
@@ -14,7 +13,7 @@
           {contacts.length > 0 ? (
             contacts.map((contact) => (
               <div key={contact._id} className="bg-white shadow p-4 rounded">
-                <h3 className="text-xl font-bold">{contact.name}</h3>
+                <h4 className="text-xl font-bold">{contact.name}</h4>
                 <p>Email: {contact.email}</p>
                 <p>Phone: {contact.phone}</p>
                 <p>Note: {contact.note}</p>

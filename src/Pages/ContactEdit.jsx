@@ -17,7 +17,7 @@ const ContactEdit = () => {
 
   const [message, setMessage] = useState({ type: "", text: "" });
 
-  // Fetch contact by ID on mount
+  // Fetch contact by ID
   useEffect(() => {
     const fetchContact = async () => {
       try {
@@ -49,7 +49,7 @@ const ContactEdit = () => {
       await axios.put(`${BASE_URL}/${id}`, formData);
       setMessage({ type: "success", text: "Contact updated successfully!" });
 
-      // Optional: redirect after a delay
+      //Redirect after a delay
       setTimeout(() => {
         navigate("/");  
       }, 1500);

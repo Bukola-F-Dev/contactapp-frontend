@@ -15,32 +15,28 @@ const Search = ({ onSearch }) => {
   return (
   <form
     onSubmit={handleSubmit}
-    className="flex items-center gap-2 mb-4 w-full mt-8"
+    className="flex items-center gap-2 mb-6 p-4"
   >
     <input
       type="text"
       placeholder="Search by name or email"
       value={query}
       onChange={(e) => setQuery(e.target.value)}
-      className="p-2 border rounded flex-1 w-full"
+      className="p-2 bg-white rounded flex-1 w-full"
       required
     />
     <button
       type="submit"
       className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-    >
-      Search
-    </button>
+    >Search</button>
     <button
       type="button"
       onClick={() => {
         setQuery("");
         onSearch(""); // Reset list
       }}
-      className="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
-    >
-      Clear
-    </button>
+      className="px-4 py-2 bg-gray-300 font-semibold text-black rounded hover:bg-gray-400"
+    >Clear</button>
   </form>
   );
 };
