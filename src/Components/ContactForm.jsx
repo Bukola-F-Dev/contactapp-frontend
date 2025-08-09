@@ -75,8 +75,8 @@ const ContactForm = ({ onSuccess }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg">
-  <h3 className="text-2xl font-bold mb-4">Add New Contact</h3>
+    <div className="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg">
+  <h2 className="text-3xl text-blue-800 font-bold mb-6">Add New Contact</h2>
 
   {message.text && (
     <div
@@ -94,56 +94,60 @@ const ContactForm = ({ onSuccess }) => {
     {/* Name & Email side-by-side */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="flex-1">
-        <label className="block text-sm font-semibold mb-1">Name</label>
+        <label className="block text-sm text-blue-800 font-semibold mb-1">Name</label>
         <input
           name="name"
+          placeholder="Enter full name"
           value={formData.name}
           onChange={handleChange}
           className={`w-full border p-2 rounded ${
-            errors.name ? "border-red-500" : "border-gray-300"
+            errors.name ? "border-red-500" : "border-gray-400"
           }`}
         />
         {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
       </div>
 
       <div className="flex-1">
-        <label className="block text-sm font-semibold mb-1">Email</label>
+        <label className="block text-sm text-blue-800 font-semibold mb-1">Email</label>
         <input
           name="email"
+          placeholder="Enter email address"
           value={formData.email}
           onChange={handleChange}
           className={`w-full p-2 border rounded ${
-            errors.email ? "border-red-500" : "border-gray-300"
+            errors.email ? "border-red-500" : "border-gray-400"
           }`}
         />
         {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
       </div>
     </div>
 
-    {/* Phone (full width) */}
+ 
     <div>
-      <label className="block text-sm font-semibold mb-1">Phone</label>
+      <label className="block text-sm text-blue-800 font-semibold mb-1">Phone</label>
       <input
         name="phone"
+        placeholder="Enter phone number"
         value={formData.phone}
         onChange={handleChange}
         className={`w-full p-2 border rounded ${
-          errors.phone ? "border-red-500" : "border-gray-300"
+          errors.phone ? "border-red-500" : "border-gray-400"
         }`}
       />
       {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
     </div>
 
-    {/* Note (full width, bigger height) */}
+   
     <div>
-      <label className="block text-sm font-semibold mb-1">Note</label>
+      <label className="block text-sm text-blue-800 font-semibold mb-1">Note</label>
       <textarea
         name="note"
+        placeholder="Add a note..."
         value={formData.note}
         onChange={handleChange}
         rows="5"
         className={`w-full p-3 border rounded resize-none ${
-          errors.note ? "border-red-500" : "border-gray-300"
+          errors.note ? "border-red-500" : "border-gray-400"
         }`}
       />
       {errors.note && <p className="text-red-500 text-sm">{errors.note}</p>}
@@ -151,7 +155,7 @@ const ContactForm = ({ onSuccess }) => {
 
     <button
       type="submit"
-      className="bg-blue-600 text-white font-bold px-4 py-2 rounded hover:bg-blue-700"
+      className="bg-blue-800 text-white font-light px-6 py-2 rounded-full hover:bg-blue-600"
     >
       Add Contact
     </button>

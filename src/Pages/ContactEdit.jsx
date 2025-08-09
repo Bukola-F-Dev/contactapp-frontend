@@ -35,12 +35,12 @@ const ContactEdit = () => {
     fetchContact();
   }, [id]);
 
-  // Handle form input changes
+  // Handles form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle update
+  // Handles update
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage({ type: "", text: "" });
@@ -48,8 +48,7 @@ const ContactEdit = () => {
     try {
       await axios.put(`${BASE_URL}/${id}`, formData);
       setMessage({ type: "success", text: "Contact updated successfully!" });
-
-      //Redirect after a delay
+ 
       setTimeout(() => {
         navigate("/");  
       }, 1500);
@@ -63,68 +62,68 @@ const ContactEdit = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 bg-white p-6 shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Edit Contact</h2>
+    <div className="max-w-2xl mx-auto mt-20 p-6 bg-white rounded-lg">
+<h2 className="text-3xl text-blue-800 font-bold mb-6">Edit Contact</h2>
 
-      {message.text && (
-        <div
-          className={`mb-4 p-2 rounded ${
-            message.type === "success"
-              ? "bg-green-100 text-green-700"
-              : "bg-red-100 text-red-700"
-          }`}
-        >
-          {message.text}
-        </div>
-      )}
+{message.text && (
+  <div
+    className={`mb-4 p-2 rounded ${
+      message.type === "success"
+        ? "bg-green-100 text-green-700"
+        : "bg-red-100 text-red-700"
+    }`}
+  >
+    {message.text}
+  </div>
+)}
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-semibold">Name</label>
+  
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="flex-1">
+    <label className="block text-sm text-blue-800 font-semibold mb-1">Name</label>
           <input
             type="text"
             name="name"
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
-          />
+            className="w-full border p-2 rounded" />
         </div>
-
-        <div>
-          <label className="block text-sm font-semibold">Email</label>
+  
+        <div className="flex-1">
+        <label className="block text-sm text-blue-800 font-semibold mb-1">Email</label>
           <input
             type="email"
             name="email"
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
-          />
+            className="w-full p-2 border rounded" />
+        </div>
         </div>
 
         <div>
-          <label className="block text-sm font-semibold">Phone</label>
+        <label className="block text-sm text-blue-800 font-semibold mb-1">Phone</label>
           <input
             type="tel"
             name="phone"
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
-          />
+            className="w-full p-2 border rounded" />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold">Note</label>
+        <label className="block text-sm text-blue-800 font-semibold mb-1">Note</label>
           <input
             type="text"
             name="note"
             required
             value={formData.note}
             onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
-          />
+            rows="5"
+            className="w-full p-3 border rounded resize-none" />
         </div>
 
         <button
@@ -138,4 +137,4 @@ const ContactEdit = () => {
   );
 };
 
-export default ContactEdit;
+export default ContactEdit;   
